@@ -1,5 +1,6 @@
-package com.example.jpalearningtest.domain;
+package com.example.jpalearningtest.member;
 
+import com.example.jpalearningtest.team.Team;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class Member {
     @JoinColumn
     private Team team;
 
-    protected Member() {
+    public Member() {
     }
 
     public Long getId() {

@@ -1,5 +1,6 @@
-package com.example.jpalearningtest.domain;
+package com.example.jpalearningtest.team;
 
+import com.example.jpalearningtest.member.Member;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -12,7 +13,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class Team {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -20,7 +22,28 @@ public class Team {
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     private List<Member> members = new ArrayList<>();
 
-    protected Team() {
+//    @OneToMany(
+//        mappedBy = "team",
+//        fetch = FetchType.LAZY,
+//        cascade = CascadeType.ALL
+//    )
+//    private List<Member> members = new ArrayList<>();
+
+//    @OneToMany(
+//        mappedBy = "team",
+//        fetch = FetchType.LAZY,
+//        cascade = CascadeType.PERSIST,
+//        orphanRemoval = true
+//    )
+//    private List<Member> members = new ArrayList<>();
+
+    public Team() {
+    }
+
+    // 연관 관계 편의 메소드
+    public void addMember(Member member) {
+        members.add(member);
+        member.setTeam(this);
     }
 
     public Long getId() {
