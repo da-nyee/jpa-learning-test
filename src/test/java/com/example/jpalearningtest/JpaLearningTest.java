@@ -1,9 +1,7 @@
-package com.example.jpalearningtest.save;
+package com.example.jpalearningtest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.example.jpalearningtest.book.Book;
-import com.example.jpalearningtest.book.BookRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
