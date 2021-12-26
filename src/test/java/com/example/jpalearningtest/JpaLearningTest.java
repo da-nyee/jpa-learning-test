@@ -11,19 +11,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @DataJpaTest
-public class JpaLearningTest {
+class JpaLearningTest {
 
     @Autowired
     private TeamRepository teamRepository;
 
     @Autowired
     private MemberRepository memberRepository;
-
-    @Autowired
-    private TestEntityManager testEntityManager;
 
     @DisplayName("CascadeType.REMOVE - 부모 엔티티(Team)을 삭제하는 경우")
     @Test
@@ -46,8 +42,8 @@ public class JpaLearningTest {
         List<Team> teams = teamRepository.findAll();
         List<Member> members = memberRepository.findAll();
 
-        assertThat(teams).hasSize(0);
-        assertThat(members).hasSize(0);
+        assertThat(teams).isEmpty();
+        assertThat(members).isEmpty();
     }
 
     @DisplayName("CascadeType.REMOVE - 부모 엔티티(Team)에서 자식 엔티티(Member)를 제거하는 경우")
@@ -96,8 +92,8 @@ public class JpaLearningTest {
         List<Team> teams = teamRepository.findAll();
         List<Member> members = memberRepository.findAll();
 
-        assertThat(teams).hasSize(0);
-        assertThat(members).hasSize(0);
+        assertThat(teams).isEmpty();
+        assertThat(members).isEmpty();
     }
 
     @DisplayName("orphanRemoval = true - 부모 엔티티(Team)에서 자식 엔티티(Member)를 제거하는 경우")
